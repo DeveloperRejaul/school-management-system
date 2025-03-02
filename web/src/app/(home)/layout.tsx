@@ -28,30 +28,30 @@ export default function layout() {
           </div>
         </div>
       </section>
-      <section style={{height: "100vh"}}/>
+      <section style={{height: "35vh"}}/>
 
       {/* Services */}
-      <section style={{height: "100vh"}}>
-        <div className='flex flex-1 w-full justify-center'>
+      <section id='services' style={{height: "100vh"}} >
+        <div className='flex flex-1 w-full'>
           <div>Services</div>
         </div>
       </section>
 
       {/* Process */}
-      <section style={{height: "100vh"}}>
+      <section id='process' style={{height: "100vh"}}>
         <div className='flex flex-1 w-full justify-center'>
           <div>Process</div>
         </div>
       </section>
 
       {/* Pricing */}
-      <section style={{height: "100vh"}}>
+      <section id='pricing' style={{height: "100vh"}}>
         <div className='flex flex-1 w-full justify-center'>
           <div>Pricing</div>
         </div>
       </section>
       {/* About */}
-      <section style={{height: "100vh"}}>
+      <section id='about' style={{height: "100vh"}}>
         <div className='flex flex-1 w-full justify-center'>
           <div>About</div>
         </div>
