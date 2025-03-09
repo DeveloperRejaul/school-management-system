@@ -6,6 +6,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --border:#e5e7eb;
+  --primary:#22c55e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +14,7 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --border:#27272a;
+    --primary:#22c55e;
   }
 }
 
