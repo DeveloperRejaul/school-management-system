@@ -1,0 +1,52 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    container_name: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  app:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name:  server
+    environment:
+      # - PORT=${PORT} // variable 
+      - PORT=8000
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    volumes:
+      - ./server/src:/app/src
+      
+  web:
+      build:
+        context: ./web
+        dockerfile: Dockerfile
+      container_name:  web
+      environment:
+        - BASE_URL=http://localhost:8000
+      ports:
+        - '3000:3000'
+      depends_on:
+        - app
+      volumes:
+        - ./web/src:/app/src
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    container_name:  pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin4
+    ports:
+      - '5050:80'
+    depends_on:
+      - db
