@@ -59,7 +59,7 @@ export default function Navbar() {
           ))}
         </div>
         <div className="flex gap-x-3">
-          <div className="!bg-blue-700 btn">Contact Us</div>
+          <div className="!bg-primary btn">Contact Us</div>
         </div>
       </div>
     </nav>

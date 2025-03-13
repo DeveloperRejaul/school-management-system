@@ -21,7 +21,7 @@ export default function layout() {
           
           <div className='flex justify-center pt-6 gap-x-3 '>
             <div className='btn bg-zinc-800'>Buy Now</div>
-            <div className='btn bg-blue-600'>Pricing</div>
+            <div className='btn bg-primary'>Pricing</div>
           </div>
           <div className='h-full w-full px-28 pt-12'>
             <Image src={dashboard} className="h-full w-full" objectFit='cover' alt='dashboard'/>
