@@ -5,15 +5,22 @@ import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Logo from "@/assets/logo.png";
 
-export default function Navbar() {
+export interface INavBarProps {
+  sections?: string[];
+  rightButtonsText?: string[]
+}
+
+
+export default function Navbar(props: INavBarProps) {
+  const {
+    sections = ["home", "services", "process", "pricing", "about"],
+    rightButtonsText = ['Contact Us']
+  } = props;
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  const sections = ["home", "services", "process", "pricing", "about"];
-
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 100);
-
     const current = sections.find((id) => {
       const section = document.getElementById(id);
       if (section) {
@@ -59,7 +66,7 @@ export default function Navbar() {
           ))}
         </div>
         <div className="flex gap-x-3">
-          <div className="!bg-primary btn">Contact Us</div>
+          {rightButtonsText.map(t => <div key={t} className="btn bg-primary">{t}</div>)}
         </div>
       </div>
     </nav>

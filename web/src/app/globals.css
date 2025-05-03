@@ -30,6 +30,10 @@ body {
   background-repeat: no-repeat;
   z-index: 0;
 }
+
+.home-bg {
+  background-image: url('../assets/bg.png'); 
+}
 .overly {
   position: absolute;
   top: 0;

@@ -5,6 +5,6 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return "Server is running";
+    return 'Server is running';
   }
 }
