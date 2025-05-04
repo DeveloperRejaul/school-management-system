@@ -68,7 +68,7 @@ export default function SchoolPage() {
       
       {/* Footer section */}
       <section className='flex flex-col justify-center items-center'>
-        <footer className="text-white py-12 px-6 md:px-16 container">
+        <footer className="text-white py-12  pb-5  container">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
             {/* Column 1 */}
             <div>
@@ -132,6 +132,11 @@ export default function SchoolPage() {
             </div>
           </div>
         </footer>
+        <div className='flex h-20 w-full bg-zinc-800 items-center'>
+          <div className='container m-auto'>
+            <p className='text-center align-middle text-zinc-600'>Copyright All Right Reserved 2025, School Line</p>
+          </div>
+        </div>
       </section>
     </div>
   )

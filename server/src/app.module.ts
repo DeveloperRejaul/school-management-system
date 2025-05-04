@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { School } from './services/school/schema';
+import { SchoolModule } from './services/school/module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { School } from './services/school/schema';
       models: [
         School
       ],
-    })
+    }),
+    SchoolModule
   ],
   controllers: [AppController],
   providers: [],
