@@ -1,3 +1,5 @@
+'use'
+
 import React from 'react'
 import logo from '@/assets/logo.png'
 import Image from 'next/image'
@@ -11,7 +13,9 @@ import {
   FaSoundcloud,
 } from 'react-icons/fa';
 import Navbar from '@/components/NavBar'
+import ExperienceIcon from '@/assets/icon/experience'
 
+ 
 export default function SchoolPage() {
   const slogan ='Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, repellendus!'
   const schoolName = "Innovative School"
@@ -40,6 +44,40 @@ export default function SchoolPage() {
           <h2 className='text-7xl font-normal font-serif'>For Education </h2>
         </div>
       </section>
+
+      {/* Why Choose Us section */}
+      <section className='flex flex-1 justify-center'>
+        <div className='container text-center py-10'>
+          {/* Title part */}
+          <div className='space-y-3'>
+            <h1 className='text-4xl font-bold'>Why Choose Us</h1>
+            <p className='text-xl text-zinc-400'>Ecosystem blended learning off-the-shelf learning storytelling explainer animation completion criteria.</p>
+          </div>
+          {/* card part */}
+          <div className='grid gap-x-10 grid-cols-3 pt-10'>
+            <div className='p-10 shadow shadow-zinc-700'>
+              <div className='pb-10 flex justify-center'>
+                <div className='bg-primary h-16 w-16 rounded-full flex justify-center items-center'>
+                  <ExperienceIcon/>
+                </div>
+              </div>
+              <h3 className='font-bold text-lg'>Experienced Teachers</h3>
+              <p>Morbi vel augue et metus pellentesque lacinia eu non odio.</p>
+            </div>
+            <div className='p-10 shadow shadow-zinc-700'>
+              <div className='p-10'>Logo</div>
+              <h3 className='font-bold text-lg'>Best Learning Programm</h3>
+              <p>Morbi vel augue et metus pellentesque lacinia eu non odio.</p>
+            </div>
+            <div className='p-10 shadow shadow-zinc-700'>
+              <div className='p-10'>Logo</div>
+              <h3 className='font-bold text-lg'>Global Certificate</h3>
+              <p>Etiam risus neque, volutpat vel laoreet a, finibus volutpa.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Admission section */}
       <section id='admission' className='h-[100vh] flex flex-col justify-center items-center'>
         <h1>{slogan}</h1>

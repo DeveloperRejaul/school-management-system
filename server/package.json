@@ -25,6 +25,7 @@
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/sequelize": "^11.0.0",
     "class-validator": "^0.14.2",
+    "fetch": "^1.1.0",
     "pg": "^8.14.0",
     "sequelize": "^6.37.7",
     "sequelize-typescript": "^2.1.6",

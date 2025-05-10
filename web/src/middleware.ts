@@ -1,22 +1,26 @@
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import {  NextRequest } from 'next/server'
  
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
-
+  const {pathname} = request.nextUrl
 
   // handle school page router 
-  if(request.nextUrl.pathname.startsWith('/school')) {
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(null)
-      }, 2000)
-    })
-    return NextResponse.next()
+  if(pathname.startsWith('/school')) {
+    try {
+      const schoolName = pathname.split("/").pop()
+      const res = await fetch(`${process.env.BASE_URL}/api/v1/school/${schoolName}`)
+      const data = await res.json()
+
+      if(data) return NextResponse.next()
+      throw Error('not found')
+    } catch {
+      return NextResponse.redirect(new URL("/not-found", request.url))
+    }
   } 
   
   //  handle authentication dashboard route 
-  if(request.nextUrl.pathname.startsWith('/dashboard')) {
+  if(pathname.startsWith('/dashboard')) {
     const isLogin = true;
     if(isLogin){
       return NextResponse.next()
@@ -29,4 +33,5 @@ export async function middleware(request: NextRequest) {
 // See "Matching Paths" below to learn more
 export const config = {
   matcher: ['/dashboard/:path*', '/school/:path*'],
+  runtime: 'nodejs',
 }

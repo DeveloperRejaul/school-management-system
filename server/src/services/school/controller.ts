@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { SchoolService } from './service';
 import { CreateSchoolDto } from './dto';
 
@@ -9,5 +9,9 @@ export class SchoolController {
   @Post()
   create (@Body() body: CreateSchoolDto) {
     return this.service.create(body);
+  }
+  @Get(':id')
+  get (@Param() {id}) {
+    return this.service.getByName(id);
   }
 }
