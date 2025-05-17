@@ -1,5 +1,3 @@
-'use'
-
 import React from 'react'
 import logo from '@/assets/logo.png'
 import Image from 'next/image'
@@ -14,17 +12,63 @@ import {
 } from 'react-icons/fa';
 import Navbar from '@/components/NavBar'
 import ExperienceIcon from '@/assets/icon/experience'
-
+import AdmissionImage from '@/assets/admission.png'
+import NoticeImage from '@/assets/notice.png'
  
 export default function SchoolPage() {
   const slogan ='Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, repellendus!'
   const schoolName = "Innovative School"
+  const notices = [
+    {
+      day: '17',
+      month: 'Dec',
+      content:
+      'সম্মানিত অভিভাবকবৃন্দ, পঞ্চম শ্রেণির ফলাফল প্রকাশিত হয়েছে। ফলাফল নিয়ে কোনো অভিযোগ বা মতামত থাকলে অফিসে এসে যোগাযোগ করুন। - 2024',
+      link: '/downloads/result1.pdf',
+    },
+    {
+      day: '25',
+      month: 'Dec',
+      content:
+      '৫ম থেকে পঞ্চম শ্রেণির ফলাফল প্রকাশ হয়েছে। ফলাফল দেখতে ভিজিট করুন। ফলাফল নিয়ে কোনো মতামত থাকলে অফিসে যোগাযোগ করুন। - 2024',
+      link: '',
+    },
+    {
+      day: '10',
+      month: 'Dec',
+      content: 'ভর্তি বিজ্ঞপ্তি................... - 2024',
+      link: '/downloads/admission.pdf',
+    },
+  ];
 
+
+  const teachers = [
+    {
+      name: 'Polina Kerston',
+      role: 'English Teacher',
+      img: 'https://shelly.merku.love/wp-content/uploads/2020/11/img5-270x405.png',
+    },
+    {
+      name: 'Faadi Al Rahman',
+      role: 'Instructor',
+      img: 'https://shelly.merku.love/wp-content/uploads/2020/11/img6-270x405.png',
+    },
+    {
+      name: 'Chikelu Obasea',
+      role: 'Art Teacher',
+      img: 'https://shelly.merku.love/wp-content/uploads/2020/11/img6-270x405.png',
+    },
+    {
+      name: 'Katayama Fumiki',
+      role: 'Teacher',
+      img: 'https://shelly.merku.love/wp-content/uploads/2020/11/img8-270x405.png',
+    },
+  ];
   return (
     <div className="bg-background w-full">
       {/* nav bar section */}
       <Navbar 
-        sections={["home", "admission","result","notice","tethers","about"]}
+        sections={["home", "admission","notice","tethers","about"]}
         rightButtonsText={['Login', 'Register']}
       />
       {/* Home section */}
@@ -79,33 +123,173 @@ export default function SchoolPage() {
       </section>
 
       {/* Admission section */}
-      <section id='admission' className='h-[100vh] flex flex-col justify-center items-center'>
-        <h1>{slogan}</h1>
-        <h1>{schoolName}</h1>
-      </section>
-      {/* Result section */}
-      <section id='result' className='h-[100vh] flex flex-col justify-center items-center'>
-        <h1>{slogan}</h1>
-        <h1>{schoolName}</h1>
+      <section id='admission' className='flex flex-col justify-center items-center'>
+        <div className="w-full py-12 px-6">
+          <div className="container mx-auto flex flex-col md:flex-row items-center md:items-start rounded-lg overflow-hidden shadow-lg">
+            {/* Left Image */}
+            <div className="w-full h-full md:w-1/2 md:h-auto relative">
+              <Image
+                src={AdmissionImage}
+                alt="Driving Instructor"
+                objectFit="cover"
+                className="object-cover rounded-lg"
+              />
+            </div>
+
+            {/* Right Form */}
+            <div className="w-full md:w-1/2 p-6 md:p-10 self-center">
+              <h2 className="text-2xl font-bold mb-6">Application Form</h2>
+              <form className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full bg-transparent border border-zinc-700 px-4 py-2 rounded"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full bg-transparent border border-zinc-700 px-4 py-2 rounded"
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone"
+                  className="w-full bg-transparent border border-zinc-700 px-4 py-2 rounded"
+                />
+                <input
+                  type="datetime-local"
+                  className="w-full border border-zinc-700 bg-transparent px-4 py-2 rounded"
+                />
+                <div className="flex gap-4 flex-col sm:flex-row">
+                  <select className="w-full bg-transparent border border-zinc-700 px-4 py-2 rounded">
+                    <option>Course Type</option>
+                    <option>Beginner</option>
+                    <option>Advanced</option>
+                  </select>
+                  <select className="w-full bg-transparent border border-zinc-700 px-4 py-2 rounded">
+                    <option>Car Type</option>
+                    <option>Manual</option>
+                    <option>Automatic</option>
+                  </select>
+                </div>
+                <button
+                  type="submit"
+                  className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+                >
+                SEND INQUIRY
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </section>
       {/* Notice section */}
-      <section id='notice' className='h-[100vh] flex flex-col justify-center items-center'>
-        <h1>{slogan}</h1>
-        <h1>{schoolName}</h1>
+      <section id='notice' className='flex flex-col justify-center items-center'>
+        <div className="container mx-auto flex flex-col md:flex-row items-center md:items-start rounded-lg overflow-hidden shadow-lg space-x-5">
+          <div className="md:w-2/3 w-full self-center">
+            <h2 className="text-3xl font-bold mb-6">📢 Notice</h2>
+            <div className="space-y-4">
+              {notices.map((notice, idx) => (
+                <div key={idx} className="p-4 rounded-md shadow-sm border border-zinc-700">
+                  <div className="flex items-start gap-4">
+                    <div className="text-center">
+                      <div className="text-md font-bold">{notice.month}</div>
+                      <div className="text-2xl font-extrabold">{notice.day}</div>
+                    </div>
+                    <div className="flex-1 text-sm">
+                      <p className="mb-1 leading-6">{notice.content}</p>
+                      {notice.link && (
+                        <a
+                          href={notice.link}
+                          target="_blank"
+                          className="text-blue-600 hover:underline text-sm inline-flex items-center gap-1"
+                          rel="noopener noreferrer"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12v9m0 0l-3-3m3 3l3-3M12 3v9"
+                            />
+                          </svg>
+                              Download
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Read More Button */}
+            <div className="mt-6">
+              <button className="text-white px-5 py-2 bg-blue-600 rounded shadow hover:bg-gray-800 transition">
+                  Read More
+              </button>
+            </div>
+          </div>
+
+          {/* Left Image */}
+          <div className="w-full h-full md:w-1/2 md:h-auto relative">
+            <Image
+              src={NoticeImage}
+              alt="Notice Banner"
+              objectFit="cover"
+              className="object-cover rounded-lg"
+            />
+          </div>
+        </div>
       </section>
       {/* Tethers section */}
-      <section id='tethers' className='h-[100vh] flex flex-col justify-center items-center'>
-        <h1>{slogan}</h1>
-        <h1>{schoolName}</h1>
+      <section id='tethers' className='flex flex-col justify-center items-center'>
+        <div className="container py-16">
+          <div className="mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Our Awesome <span className="text-orange-500">Teachers</span>
+            </h2>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+              Rapid learning, web-based training, virtual classrooms, and big data-driven instructional design.
+            </p>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {teachers.map((teacher, index) => (
+                <div
+                  key={index}
+                  className="shadow-md rounded-xl overflow-hidden group transition transform hover:-translate-y-1"
+                >
+                  <div className="relative w-full h-[400px]">
+                    <Image
+                      src={teacher.img}
+                      alt={teacher.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold text-lg">{teacher.name}</h3>
+                    <p className="text-blue-600 text-sm">{teacher.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10">
+              <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+            See More
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
-      {/* About section */}
-      <section id='about' className='h-[100vh] flex flex-col justify-center items-center'>
-        <h1>{slogan}</h1>
-        <h1>{schoolName}</h1>
-      </section>
-      
-      {/* Footer section */}
-      <section className='flex flex-col justify-center items-center'>
+
+      {/* About and Footer section */}
+      <section id='about' className='flex flex-col justify-center items-center'>
         <footer className="text-white py-12  pb-5  container">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
             {/* Column 1 */}
@@ -113,7 +297,7 @@ export default function SchoolPage() {
               <h4 className="uppercase text-sm mb-4 text-gray-400">Information About</h4>
               <ul className="space-y-2 text-sm text-gray-300">
                 {['History', 'Administration', 'Our Campus', 'Cafeteria', 'Our Teachers', 'Courses', 'Academic Calendar', 'Departments', 'Undergraduate Program', 'Contact Us'].map((item) => (
-                  <li key={item}>◌ <a href="#" className='hover:underline'>{item}</a></li>
+                  <li key={item}>◌ <a className='hover:underline cursor-pointer'>{item}</a></li>
                 ))}
               </ul>
             </div>
@@ -123,7 +307,7 @@ export default function SchoolPage() {
               <h4 className="uppercase text-sm mb-4 text-gray-400">Information For</h4>
               <ul className="space-y-2 text-sm text-gray-300">
                 {['Admissions', 'Schools', 'Events', 'News', 'Applications FAQ', 'Donations', 'Teachers', 'Media', 'Alumni', 'Athletics'].map((item) => (
-                  <li key={item}>◌ <a href="#" className='hover:underline'>{item}</a></li>
+                  <li key={item}>◌ <a className='hover:underline cursor-pointer'>{item}</a></li>
                 ))}
               </ul>
             </div>
@@ -133,7 +317,7 @@ export default function SchoolPage() {
               <h4 className="uppercase text-sm mb-4 text-gray-400">Quick Links</h4>
               <ul className="space-y-2 text-sm text-gray-300">
                 {['Academic Calendar', 'Research', 'Timetable', 'News list', 'Events List', 'Shortcodes', 'Typography', 'Shop'].map((item) => (
-                  <li key={item}>◌ <a href="#" className='hover:underline'>{item}</a></li>
+                  <li key={item}>◌ <a className='hover:underline cursor-pointer'>{item}</a></li>
                 ))}
               </ul>
             </div>
@@ -170,7 +354,7 @@ export default function SchoolPage() {
             </div>
           </div>
         </footer>
-        <div className='flex h-20 w-full bg-zinc-800 items-center'>
+        <div className='flex h-20 w-full bg-[#131313] items-center'>
           <div className='container m-auto'>
             <p className='text-center align-middle text-zinc-600'>Copyright All Right Reserved 2025, School Line</p>
           </div>
