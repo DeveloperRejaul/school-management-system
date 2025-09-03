@@ -10,6 +10,17 @@ services:
     ports:
       - '5432:5432'
 
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    container_name:  pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin4
+    ports:
+      - '5050:80'
+    depends_on:
+      - db
   app:
     build:
       context: ./server
@@ -43,15 +54,19 @@ services:
         - app
       volumes:
         - ./web/src:/app/src
-
-  pgadmin:
-    image: dpage/pgadmin4
-    restart: always
-    container_name:  pgadmin
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=pgadmin4
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: nginx:latest
+    container_name: nginx
     ports:
-      - '5050:80'
+      - "443:443"
+      - "80:80"
+    restart: always
+    volumes:
+      - ./nginx/nginx-selfsigned.crt:/etc/nginx/ssl/nginx-selfsigned.crt
+      - ./nginx/nginx-selfsigned.key:/etc/nginx/ssl/nginx-selfsigned.key
     depends_on:
-      - db
+      - web
+      - app
