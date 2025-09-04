@@ -1,28 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --border:#e5e7eb;
-  --primary:#22c55e;
+@import "tailwindcss";
+@theme {
+  --color-background:#171717 ;
+  --color-foreground: #ffffff;
+  --color-border:#e5e7eb;
+  --color-primary:#22c55e;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --border:#27272a;
-    --primary:#22c55e;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
 .header{
   background-image: url('../assets/graph-paper.svg'); /* Corrected */
   background-size: cover;
@@ -48,5 +31,5 @@ body {
 }
 
 .btn {
-  @apply cursor-pointer hover:bg-zinc-800 rounded-md transition duration-500 h-14 px-5 flex items-center select-none;
+  @apply cursor-pointer hover:bg-zinc-800 rounded-md transition duration-500 h-14 px-5 flex items-center select-none text-center justify-center;
 }

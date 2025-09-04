@@ -3,7 +3,7 @@ import React from 'react'
 export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="p-8 rounded-lg shadow-lg w-full max-w-md bg-background border-border border">
+      <div className="p-8 rounded-lg shadow-lg w-full max-w-md border-border/10 border">
         <h2 className="text-2xl font-bold mb-6">Login</h2>
         <p className="mb-6">Enter your email below to login to your account</p>
         <form>
@@ -29,7 +29,7 @@ export default function LoginPage() {
           </div>
           <button
             type="submit"
-            className="w-full p-2 rounded transition duration-200 bg-foreground border border-border text-background"
+            className="btn w-full bg-primary"
           >
             Login
           </button>

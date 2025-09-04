@@ -51,7 +51,7 @@ export default function Navbar(props: INavBarProps) {
 
   return (
     <nav className={`fixed top-0 flex justify-center h-[80px] z-[9999] w-full transition-colors duration-300 
-      ${scrolled ? "bg-background backdrop-blur-lg border-b border-b-zinc-800" : "bg-transparent border-b border-b-transparent"}`}>
+      ${scrolled ? "bg-background/40 backdrop-blur-lg border-b border-b-zinc-800" : "bg-transparent border-b border-b-transparent"}`}>
       <div className="container flex justify-between items-center h-full">
         <Image src={Logo} height={100} width={100} alt="Logo" />
         <div className="flex space-x-10">
