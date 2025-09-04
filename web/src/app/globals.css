@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @theme {
   --color-background:#171717 ;
   --color-foreground: #ffffff;
@@ -13,21 +14,17 @@
   background-repeat: no-repeat;
   z-index: 0;
 }
-
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-foreground
+}
 .home-bg {
   background-image: url('../assets/bg.png'); 
 }
 .overly {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.486), rgba(0, 0, 0, 0.219));
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1;
+  background:linear-gradient(to top, rgba(0, 0, 0, 0.486), rgba(0, 0, 0, 0.219));
+  @apply flex justify-center items-center w-full h-full top-0 left-0 absolute 
 }
 
 .btn {

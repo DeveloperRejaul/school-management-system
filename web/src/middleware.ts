@@ -6,18 +6,18 @@ export async function middleware(request: NextRequest) {
   const {pathname} = request.nextUrl
 
   // handle school page router 
-  // if(pathname.startsWith('/school')) {
-  //   try {
-  //     const schoolName = pathname.split("/").pop()
-  //     const res = await fetch(`${process.env.BASE_URL}/api/v1/school/${schoolName}`)
-  //     const data = await res.json()
+  if(pathname.startsWith('/school')) {
+    try {
+      const schoolName = pathname.split("/").pop()
+      const res = await fetch(`${process.env.BASE_URL}/api/v1/school/${schoolName}`)
+      const data = await res.json()
 
-  //     if(data) return NextResponse.next()
-  //     throw Error('not found')
-  //   } catch {
-  //     return NextResponse.redirect(new URL("/not-found", request.url))
-  //   }
-  // } 
+      if(data) return NextResponse.next()
+      throw Error('not found')
+    } catch {
+      return NextResponse.redirect(new URL("/not-found", request.url))
+    }
+  } 
   
   //  handle authentication dashboard route 
   if(pathname.startsWith('/dashboard')) {

@@ -5,7 +5,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
   return (
     <html lang="en">
       <body
-        className="antialiased flex justify-center bg-background text-foreground"
+        className="antialiased flex justify-center"
       >
         {children}
       </body>
