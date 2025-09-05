@@ -1,4 +1,4 @@
-import {Body, Controller, FileTypeValidator, Get, ParseFilePipe, Post, Response, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {Body, Controller, FileTypeValidator,  ParseFilePipe, Post,  UploadedFile, UseInterceptors } from '@nestjs/common';
 import { UserService } from './service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { IFileType } from 'src/types';
@@ -21,13 +21,9 @@ export class UserController {
   }
 
   @Post('/login')
-  login(@Body() body:LoginUserDto,@Response() res) {
-    return this.service.login(body, res);
+  login(@Body() body:LoginUserDto) {
+    return this.service.login(body);
   }
 
-  @Get('/logout')
-  logout(@Response() res) {
-    return this.service.logout(res);
-  }
 
 }

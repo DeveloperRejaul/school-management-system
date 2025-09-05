@@ -1,6 +1,5 @@
-import { NextResponse } from 'next/server'
-import {  NextRequest } from 'next/server'
- 
+import { NextResponse,NextRequest } from 'next/server'
+
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
   const {pathname} = request.nextUrl
@@ -21,7 +20,7 @@ export async function middleware(request: NextRequest) {
   
   //  handle authentication dashboard route 
   if(pathname.startsWith('/dashboard')) {
-    console.log(request.cookies);
+    console.log(request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_KEY!));
     
     const isLogin = false;
     if(isLogin){

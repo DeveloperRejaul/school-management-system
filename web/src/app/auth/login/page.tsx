@@ -1,6 +1,7 @@
 'use client'
 
 import Input from '@/core/components/Input'
+import { setCookie } from '@/core/utils/cookies'
 import Link from 'next/link'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -29,7 +30,11 @@ export default function LoginPage() {
         }
       })
       const result = await res.json()
-      console.log(result);
+      setCookie(process.env.NEXT_PUBLIC_COOKIE_KEY!, result.token, {
+        days: 365,        // or maxAge: 60 * 60 * 24 * 365
+        sameSite: 'lax',
+        secure: true,
+      });
     } catch (error) {
       console.log(error);
       

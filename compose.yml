@@ -50,7 +50,9 @@ services:
         dockerfile: Dockerfile
       container_name:  web
       environment:
-        - BASE_URL=http://host.docker.internal:3001
+        - NEXT_PUBLIC_BASE_URL=http://host.docker.internal:3001
+        - NEXT_PUBLIC_COOKIE_KEY=school
+        - NEXT_PUBLIC_JWT_SECRET=school
       ports:
         - '3001:3001'
       depends_on:

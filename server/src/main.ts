@@ -44,8 +44,9 @@ async function bootstrap() {
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true,
     });
-
-    app.use(cookieParser());
+    app.getHttpAdapter().getInstance().set('trust proxy', 1);
+    app.use(cookieParser(process.env.COOKIE_KEY));
+    
     const config = new DocumentBuilder()
       .setTitle('School management system')
       .setDescription('The School management system API description')
