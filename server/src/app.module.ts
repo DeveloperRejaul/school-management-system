@@ -3,6 +3,10 @@ import { AppController } from './app.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { School } from './services/school/schema';
 import { SchoolModule } from './services/school/module';
+import { User, UserSchool } from './services/user/schema';
+import { UserModule } from './services/user/module';
+import { FileModule } from './services/file/module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -16,12 +20,16 @@ import { SchoolModule } from './services/school/module';
       synchronize: true,
       autoLoadModels: true,
       models: [
-        School
+        School,
+        UserSchool,
+        User,
       ],
     }),
-    SchoolModule
+    SchoolModule,
+    UserModule,
+    FileModule,
+    JwtModule.register({ global: true, secret: process.env.JWT_SECRET, signOptions: { expiresIn: '7d' } }),
   ],
   controllers: [AppController],
-  providers: [],
 })
 export class AppModule {}

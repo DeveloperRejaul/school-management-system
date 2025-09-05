@@ -34,6 +34,9 @@ services:
       - PG_USER=postgres
       - PG_PASS=postgres
       - PG_NAME=postgres
+      - ORIGIN=http://localhost:8000,http://localhost:3001,https://localhost:3001,https://localhost
+      - COOKIE_KEY=school
+      - JWT_SECRET=school
     ports:
       - '8000:8000'
     depends_on:
@@ -47,7 +50,7 @@ services:
         dockerfile: Dockerfile
       container_name:  web
       environment:
-        - BASE_URL=http://host.docker.internal:8000
+        - BASE_URL=http://host.docker.internal:3001
       ports:
         - '3001:3001'
       depends_on:

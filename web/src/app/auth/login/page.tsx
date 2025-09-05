@@ -1,32 +1,73 @@
+'use client'
+
+import Input from '@/core/components/Input'
 import Link from 'next/link'
 import React from 'react'
+import { useForm } from 'react-hook-form'
+
+interface FromVales {
+  email:string
+  password:string
+}
+
 
 export default function LoginPage() {
+  const {register,handleSubmit,formState: {errors}} = useForm<FromVales>()
+
+  const onSubmit = async (data:FromVales) => {
+    try {
+      const res = await fetch("http://localhost:8000/api/user/login", {
+        method:"POST",
+        body: JSON.stringify({
+          "email": data.email,
+          "password": data.password,
+          "remember": true
+        }),
+        headers:{
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        }
+      })
+      const result = await res.json()
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="p-8 rounded-lg shadow-lg w-full max-w-md border-border/10 border">
         <h2 className="text-2xl font-bold mb-6">Login</h2>
         <p className="mb-6">Enter your email below to login to your account</p>
-        <form>
-          <div className="mb-4">
-            <label className="block mb-2" htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              className="w-full p-2 rounded focus:outline-none focus:ring-1 text-foreground border border-border bg-background focus:ring-foreground placeholder-foreground"
-              placeholder="m@example.com"
-            />
-          </div>
-          <div className="mb-6">
-            <label className="block mb-2" htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              className="w-full p-2 rounded focus:outline-none focus:ring-1 text-foreground border border-border bg-background focus:ring-foreground placeholder-foreground"
-            />
-            <div className="text-right mt-2">
-              <a href="#" className="text-sm hover:underline">Forgot your password?</a>
-            </div>
+        <form className='space-y-3' onSubmit={handleSubmit(onSubmit)} >
+          <Input 
+            id='email' 
+            type='email' 
+            label='Email' 
+            placeholder='m@example.com' 
+            autoComplete="email"
+            error={errors.email?.message}
+            {...register('email', {
+              required:{message:"Email is required", value:true},
+              pattern:{message:'Please enter a valid email address.', value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}
+            })} 
+          />
+          <Input 
+            id='password' 
+            type='password' 
+            label='Password' 
+            placeholder='Type password' 
+            autoComplete="current-password"
+            error={errors.password?.message}
+            {...register('password', {
+              required:{message:"Password is required", value:true},
+              minLength:{message:'Use at least 6 characters.', value: 6}
+            })} 
+          />
+          <div className="text-right mt-2">
+            <a href="#" className="text-sm hover:underline">Forgot your password?</a>
           </div>
           <button
             type="submit"

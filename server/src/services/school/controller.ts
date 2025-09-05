@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { SchoolService } from './service';
 import { CreateSchoolDto } from './dto';
 
-@Controller('api/v1/school')
+@Controller('/api/school')
 export class SchoolController {
   constructor(private readonly service: SchoolService) { }
 
