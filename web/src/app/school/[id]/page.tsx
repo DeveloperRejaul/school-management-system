@@ -1,7 +1,7 @@
 import React from 'react'
-import logo from '@/assets/logo.png'
+import logo from '@/core/assets/logo.png'
 import Image from 'next/image'
-import Dot from '@/components/dot'
+import Dot from '@/core/components/dot'
 import {
   FaFacebookF,
   FaGooglePlusG,
@@ -10,10 +10,10 @@ import {
   FaInstagram,
   FaSoundcloud,
 } from 'react-icons/fa';
-import Navbar from '@/components/NavBar'
-import ExperienceIcon from '@/assets/icon/experience'
-import AdmissionImage from '@/assets/admission.png'
-import NoticeImage from '@/assets/notice.png'
+import Navbar from '@/core/components/NavBar'
+import ExperienceIcon from '@/core/assets/icon/experience'
+import AdmissionImage from '@/core/assets/admission.png'
+import NoticeImage from '@/core/assets/notice.png'
  
 export default function SchoolPage() {
   const slogan ='Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, repellendus!'

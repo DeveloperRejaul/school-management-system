@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import Logo from '@/assets/logo.png'
+import Logo from '@/core/assets/logo.png'
 export default function SideBar() {
   return (
     <div className='w-[300px] h-full border-r border-r-border'>

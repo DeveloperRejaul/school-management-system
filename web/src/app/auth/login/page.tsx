@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function LoginPage() {
@@ -34,8 +35,11 @@ export default function LoginPage() {
             Login
           </button>
         </form>
-        <div className="mt-6 text-center">
-          <p>Don&apos;t have an account? <a href="#" className="hover:underline">Sign up</a></p>
+        <div className="mt-6 text-center flex justify-center gap-x-2">
+          <div>Don&apos;t have an account?</div>
+          <Link href="/auth/signup" className="cursor-pointer hover:underline">
+            Login
+          </Link>
         </div>
       </div>
     </div>

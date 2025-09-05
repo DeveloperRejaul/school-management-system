@@ -1,20 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, ReactNode } from "react";
 import Image from "next/image";
-import Logo from "@/assets/logo.png";
+import Logo from "@/core/assets/logo.png";
 
 export interface INavBarProps {
   sections?: string[];
   rightButtonsText?: string[]
+  rightComponent?:ReactNode
 }
 
 
 export default function Navbar(props: INavBarProps) {
   const {
     sections = ["home", "services", "process", "pricing", "about"],
-    rightButtonsText = ['Contact Us']
+    rightButtonsText = ['Contact Us'],
+    rightComponent,
   } = props;
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -66,7 +68,7 @@ export default function Navbar(props: INavBarProps) {
           ))}
         </div>
         <div className="flex gap-x-3">
-          {rightButtonsText.map(t => <div key={t} className="btn bg-primary">{t}</div>)}
+          {rightComponent || rightButtonsText.map(t => <div key={t} className="btn bg-primary">{t}</div>)}
         </div>
       </div>
     </nav>

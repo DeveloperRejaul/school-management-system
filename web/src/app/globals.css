@@ -8,7 +8,7 @@
 }
 
 .header{
-  background-image: url('../assets/graph-paper.svg'); /* Corrected */
+  background-image: url('../core/assets/graph-paper.svg'); /* Corrected */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,7 +19,7 @@ body {
   @apply bg-background text-foreground
 }
 .home-bg {
-  background-image: url('../assets/bg.png'); 
+  background-image: url('../core/assets/bg.png'); 
 }
 .overly {
   z-index: 1;

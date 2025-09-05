@@ -1,4 +1,4 @@
-import SideBarIcon from '@/assets/icon/side-bar-icon'
+import SideBarIcon from '@/core/assets/icon/side-bar-icon'
 import React from 'react'
 
 export default function Header() {
