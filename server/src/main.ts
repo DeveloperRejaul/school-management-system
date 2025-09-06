@@ -37,7 +37,6 @@ async function bootstrap() {
     // create server
     const PORT = parseInt(process.env.PORT!);
     const app = await NestFactory.create(AppModule);
-    console.log([...process.env.ORIGIN!.split(',')]);
     
     app.enableCors({
       origin: [...process.env.ORIGIN!.split(',')],

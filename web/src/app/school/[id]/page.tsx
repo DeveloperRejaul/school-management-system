@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+ 
 import React from 'react'
 import logo from '@/core/assets/logo.png'
 import Image from 'next/image'
@@ -14,10 +16,21 @@ import Navbar from '@/core/components/NavBar'
 import ExperienceIcon from '@/core/assets/icon/experience'
 import AdmissionImage from '@/core/assets/admission.png'
 import NoticeImage from '@/core/assets/notice.png'
- 
-export default function SchoolPage() {
-  const slogan ='Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, repellendus!'
-  const schoolName = "Innovative School"
+import { headers } from 'next/headers';
+import { SchoolTypes } from '@/types';
+import { req } from '@/core/utils/req';
+
+
+export default async function SchoolPage() {
+  const headersList = headers();
+  //@ts-ignore
+  const schoolData = headersList.get('x-school-data');
+  const data:SchoolTypes = JSON.parse(schoolData);
+
+  const teacherss = await req('/api/school/demo')
+  const noticess = await req('/api/school/demo')
+  
+  
   const notices = [
     {
       day: '17',
@@ -64,6 +77,8 @@ export default function SchoolPage() {
       img: 'https://shelly.merku.love/wp-content/uploads/2020/11/img8-270x405.png',
     },
   ];
+
+  
   return (
     <div className="bg-background w-full">
       {/* nav bar section */}
@@ -79,13 +94,13 @@ export default function SchoolPage() {
             <Dot className='bg-green-700'/>
             <Dot className='bg-green-700'/>
             <Dot className='bg-green-700'/>
-            <h1 className='text-zinc-400'>{slogan}</h1>
+            <h1 className='text-zinc-400'>{data?.slogan}</h1>
             <Dot className='bg-green-700'/>
             <Dot className='bg-green-700'/>
             <Dot className='bg-green-700'/>
           </div>
-          <h1 className='text-7xl font-bold font-sans'>{schoolName}</h1>
-          <h2 className='text-7xl font-normal font-serif'>For Education </h2>
+          <h1 className='text-7xl font-bold font-sans'>{data?.title}</h1>
+          <h2 className='text-7xl font-normal font-serif'>{data?.subTitle}</h2>
         </div>
       </section>
 

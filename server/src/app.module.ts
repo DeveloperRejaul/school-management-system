@@ -7,6 +7,16 @@ import { User, UserSchool } from './services/user/schema';
 import { UserModule } from './services/user/module';
 import { FileModule } from './services/file/module';
 import { JwtModule } from '@nestjs/jwt';
+import { Notice } from './services/notice/schema';
+import { Class } from './services/class/schema';
+import { Student } from './services/student/schema';
+import { Subject } from './services/subject/schema';
+import { Teacher } from './services/teacher/schema';
+import { NoticeModule } from './services/notice/module';
+import { ClasssModule } from './services/class/module';
+import { StudentModule } from './services/student/module';
+import { TeacherModule } from './services/teacher/module';
+import { SubjectModule } from './services/subject/module';
 
 @Module({
   imports: [
@@ -23,11 +33,21 @@ import { JwtModule } from '@nestjs/jwt';
         School,
         UserSchool,
         User,
+        Notice,
+        Class,
+        Student,
+        Subject,
+        Teacher,
       ],
     }),
     SchoolModule,
     UserModule,
     FileModule,
+    NoticeModule,
+    ClasssModule,
+    StudentModule,
+    SubjectModule,
+    TeacherModule,
     JwtModule.register({ global: true, secret: process.env.JWT_SECRET, signOptions: { expiresIn: '7d' } }),
   ],
   controllers: [AppController],

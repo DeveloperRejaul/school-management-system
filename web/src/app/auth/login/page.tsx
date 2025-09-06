@@ -1,7 +1,10 @@
 'use client'
 
+import Button from '@/core/components/buttons/Button'
 import Input from '@/core/components/Input'
+import useFetch from '@/core/hook/useFetch'
 import { setCookie } from '@/core/utils/cookies'
+import { UserRes } from '@/types'
 import Link from 'next/link'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -14,30 +17,28 @@ interface FromVales {
 
 export default function LoginPage() {
   const {register,handleSubmit,formState: {errors}} = useForm<FromVales>()
+  const {isLoading, req}= useFetch<UserRes>()
 
   const onSubmit = async (data:FromVales) => {
     try {
-      const res = await fetch("http://localhost:8000/api/user/login", {
+      const result = await req("/api/user/login", {
         method:"POST",
         body: JSON.stringify({
           "email": data.email,
           "password": data.password,
           "remember": true
-        }),
-        headers:{
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        }
+        })
       })
-      const result = await res.json()
-      setCookie(process.env.NEXT_PUBLIC_COOKIE_KEY!, result.token, {
-        days: 365,        // or maxAge: 60 * 60 * 24 * 365
-        sameSite: 'lax',
-        secure: true,
-      });
+      if(result.data) {
+        setCookie(process.env.NEXT_PUBLIC_COOKIE_KEY!, result.data?.token, {
+          days: 365,        // or maxAge: 60 * 60 * 24 * 365
+          sameSite: 'lax',
+          secure: true,
+        });
+      }
+
     } catch (error) {
       console.log(error);
-      
     }
   }
 
@@ -74,12 +75,7 @@ export default function LoginPage() {
           <div className="text-right mt-2">
             <a href="#" className="text-sm hover:underline">Forgot your password?</a>
           </div>
-          <button
-            type="submit"
-            className="btn w-full bg-primary"
-          >
-            Login
-          </button>
+          <Button text='Login' type='submit' isLoading={isLoading} className='w-full'/>
         </form>
         <div className="mt-6 text-center flex justify-center gap-x-2">
           <div>Don&apos;t have an account?</div>

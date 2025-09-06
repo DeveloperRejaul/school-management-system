@@ -1,22 +1,11 @@
 // user.model.ts
-import {
-  Table, Column, Model, PrimaryKey, IsUUID, BelongsToMany, Unique,
-  DataType,
-  ForeignKey,
-} from 'sequelize-typescript';
-import {
-  UUIDV4,
-  InferAttributes,
-  InferCreationAttributes,
-} from 'sequelize';
+import {Table, Column, Model, PrimaryKey, IsUUID, BelongsToMany, Unique,DataType,ForeignKey} from 'sequelize-typescript';
+import {UUIDV4,InferAttributes,InferCreationAttributes} from 'sequelize';
 import { School } from '../school/schema';
 import { UserRole, UserRoleEnum } from './UserRole';
 
 @Table({ tableName: 'Users' })
-export class User extends Model<
-  InferAttributes<User>,
-  InferCreationAttributes<User>
-> {
+export class User extends Model<InferAttributes<User>,InferCreationAttributes<User>> {
   @IsUUID(4)
   @PrimaryKey
   @Column({ type: DataType.UUID, defaultValue: UUIDV4 })

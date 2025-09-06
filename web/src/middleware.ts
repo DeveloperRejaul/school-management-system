@@ -1,4 +1,5 @@
 import { NextResponse,NextRequest } from 'next/server'
+import { req } from './core/utils/req'
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
@@ -8,21 +9,22 @@ export async function middleware(request: NextRequest) {
   if(pathname.startsWith('/school')) {
     try {
       const schoolName = pathname.split("/").pop()
-      const res = await fetch(`${process.env.BASE_URL}/api/v1/school/${schoolName}`)
-      const data = await res.json()
-
-      if(data) return NextResponse.next()
+      const {data} = await req(`/api/school/${schoolName}`)
+      if (data) {
+        const response = NextResponse.next()
+        response.headers.set('x-school-data', JSON.stringify(data))
+        return response
+      }
       throw Error('not found')
     } catch {
       return NextResponse.redirect(new URL("/not-found", request.url))
     }
-  } 
+  }   
   
   //  handle authentication dashboard route 
   if(pathname.startsWith('/dashboard')) {
-    console.log(request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_KEY!));
-    
-    const isLogin = false;
+    const token = request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_KEY!)?.value
+    const isLogin = token;
     if(isLogin){
       return NextResponse.next()
     }

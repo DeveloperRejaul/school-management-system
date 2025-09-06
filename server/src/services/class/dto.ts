@@ -4,7 +4,7 @@ import { IsEmail,IsString } from 'class-validator';
 
 
 
-export class CreateSchoolDto {
+export class CreateClassDto {
   @ApiProperty()
   @IsString()
     name: string;
@@ -26,8 +26,3 @@ export class CreateSchoolDto {
     slogan: string;
 }
 
-
-export class CreateSchoolWithFileDto extends CreateSchoolDto {
-  @ApiProperty({ type: 'string', format: 'binary' })
-    file: any;
-}

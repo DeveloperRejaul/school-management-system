@@ -14,7 +14,7 @@ const eslintConfig = [
   ...compat.config({
     extends: ['next'],
     rules:{
-      "no-console": ["error"],
+      "no-console": 1,
       "indent": ["error", 2],
     }
   }),
